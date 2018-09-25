@@ -6,7 +6,6 @@ var f
 $('.clear').on('click', function() {
   result.splice(0);
   $('#input').empty();
-
 });
 
 $('#1').on('click', function() {
@@ -62,4 +61,112 @@ $('#0').on('click', function() {
 $('#decimal').on('click', function() {
   result.push('.');
   $('#input').html(result);
+});
+
+
+
+//do calculation and show result with mathematical operators  && isNaN(parseInt(result[result.length-1]))
+function calculation() {
+  result.forEach(function(element, index, array) {
+    //check if 2 cal sign exist in the array
+    if (isNaN(parseInt(element)) && element != "." && index != result.length - 1) {
+
+      d = result.splice(0, index).join("");
+      e = result.splice(1, result.length - 2).join("");
+
+      if (element == "+") {
+        f = parseFloat(d) + parseFloat(e);
+      }
+
+      if (element == "-") {
+        f = parseFloat(d) - parseFloat(e);
+      }
+
+      if (element == "x") {
+        f = parseFloat(d) * parseFloat(e);
+      }
+
+      if (element == "/") {
+        f = parseFloat(d) / parseFloat(e);
+      }
+
+      result[0] = f;
+
+      $('#input').html(f);
+
+    }
+  });
+
+}
+
+//to check if anything exists in result, and if anything exists in f
+function empty() {
+  if (parseFloat(f) != 0 && result.length == 0) {
+    result[0] = f;
+  }
+}
+
+//click on calc signs and process calculation
+$('#plus').on('click', function() {
+  empty();
+  result.push('+');
+  $('#input').html(result);
+  calculation();
+});
+
+$('#minus').on('click', function() {
+  empty();
+  result.push('-');
+  $('#input').html(result);
+  calculation();
+});
+
+$('#divide').on('click', function() {
+  empty();
+  result.push('/');
+  $('#input').html(result);
+  calculation();
+});
+
+$('#X').on('click', function() {
+  empty();
+  result.push('x');
+  $('#input').html(result);
+  calculation();
+});
+
+
+//do calculation with equal sign
+$('#equal').on('click', function() {
+  console.log("result = " + result)
+  result.forEach(function(element, index, array) {
+
+    if (isNaN(parseInt(element)) && element != ".") {
+
+      d = result.splice(0, index).join("");
+      console.log(d);
+      e = result.splice(1).join("");
+      console.log(e);
+
+      if (element == "+") {
+        f = parseFloat(d) + parseFloat(e);
+      }
+
+      if (element == "-") {
+        f = parseFloat(d) - parseFloat(e);
+      }
+
+      if (element == "x") {
+        f = parseFloat(d) * parseFloat(e);
+      }
+
+      if (element == "/") {
+        f = parseFloat(d) / parseFloat(e);
+      }
+
+      $('#input').html(f);
+      result.splice(0);
+
+    }
+  });
 });
