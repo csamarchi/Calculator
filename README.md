@@ -1,6 +1,6 @@
 # Calculator
 
-* A simple calculator app using `HTML` `css` and `javascrip`
+## A simple calculator app using `HTML`, `css`, and `javascrip`
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
